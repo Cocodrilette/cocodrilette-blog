@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+  #homePresentation {
+    font-size: 1.8rem;
+  }
+
+  #homeSocials {
+    margin-top: 2rem;
+  }
+
+  #homeSocials > * {
+    margin-top: 1rem;
+  }
+
+  #homeSubPresentation {
+    font-size: 1.2rem;
+  }
+}
