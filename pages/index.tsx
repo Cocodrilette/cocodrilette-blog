@@ -30,7 +30,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
           Solidity developer
         </h1>
         <h1 id={styles.homePresentation} className="mb-0 text-6xl">
-          and backend lover
+          and backend lover.
         </h1>
       </div>
 
