@@ -7,7 +7,7 @@ export const About = (): JSX.Element => {
   return (
     <Layout
       customMeta={{
-        title: 'About - Hunter Chang',
+        title: 'Contact - Cocodrilette',
       }}
     >
       <div id={styles.contactMeText} className="my-28">
