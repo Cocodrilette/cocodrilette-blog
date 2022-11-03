@@ -17,6 +17,7 @@ import Layout, { WEBSITE_HOST_URL } from '../../components/Layout';
 import { MetaProps } from '../../types/layout';
 import { PostType } from '../../types/post';
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils';
+import { BsShareFill } from 'react-icons/bs';
 
 import styles from '../../styles/post.module.css';
 // Custom components/renderers to pass to MDX.
@@ -45,12 +46,25 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
   return (
     <Layout customMeta={customMeta}>
       <article id={styles.articleContainer} className="flex-col">
-        <h1 className="mb-3 mt-5 text-gray-900 dark:text-white">
+        <h1 className="mb-1 mt-5 text-gray-900 text-3xl font-extrabold dark:text-white">
           {frontMatter.title}
         </h1>
+        <p className="mb-10 text-sm  text-gray-500 dark:text-gray-400">
+          {frontMatter.tag}
+        </p>
         <p className="mb-10 text-sm text-gray-500 dark:text-gray-400">
           {format(parseISO(frontMatter.date), 'MMMM dd, yyyy')}
         </p>
+
+        <button
+          title="Share"
+          className="max-w-xs"
+          onClick={() => {
+            // console.log(window.location); // todo
+          }}
+        >
+          <BsShareFill />
+        </button>
         <div className="prose dark:prose-dark">
           <MDXRemote {...source} components={components} />
         </div>

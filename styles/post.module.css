@@ -1,9 +1,13 @@
 #articleContainer > * {
-  box-sizing: border-box;
   min-width: 100%;
 }
 
-#articleContainer > * > * {
-  box-sizing: border-box;
+#articleContainer > * > * > * {
   min-width: 100%;
+}
+
+#articleContainer > button > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
 }

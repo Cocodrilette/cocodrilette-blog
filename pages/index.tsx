@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../components/Layout';
+import { MetaProps } from '../types/layout';
 import { getAllPosts } from '../lib/api';
 import { PostType } from '../types/post';
 import { BsGithub, BsTwitter } from 'react-icons/bs';
@@ -14,10 +15,16 @@ type IndexProps = {
 };
 
 export const Index = ({ posts }: IndexProps): JSX.Element => {
+  const customMeta: MetaProps = {
+    title: `Cocodrilette`,
+    description:
+      'As space dedicated to talk about tech, blockchain, web dev, and some more interest things. So, keep your eyes on it.',
+    // image: ,
+  };
   const lastestPosts = posts.slice(0, 2);
 
   return (
-    <Layout>
+    <Layout customMeta={customMeta}>
       <div className="flex-col mt-10">
         {' '}
         <h1 id={styles.homePresentation} className="mb-0 text-6xl">
