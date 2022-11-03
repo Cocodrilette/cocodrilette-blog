@@ -29,12 +29,21 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
     posts_: Array<PostType>
   ): Array<PostType> => {
     const matches = posts_.filter((post) => {
-      if (searchValue_ === '') {
+      if (searchValue_.trim() === '') {
         return posts_;
       } else if (
-        post.title.toLowerCase().includes(searchValue_.toLowerCase()) ||
-        post.tag.toLowerCase().includes(searchValue_.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchValue_.toLowerCase())
+        post.title
+          ?.trim()
+          .toLowerCase()
+          .includes(searchValue_.trim().toLowerCase()) ||
+        post.tag
+          ?.trim()
+          .toLowerCase()
+          .includes(searchValue_.trim().toLowerCase()) ||
+        post.description
+          ?.trim()
+          .toLowerCase()
+          .includes(searchValue_.trim().toLowerCase())
       ) {
         return post;
       }
