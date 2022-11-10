@@ -40,11 +40,19 @@ const LikeButton = ({ alreadyLiked, setAlreadyLiked }) => {
   return (
     <button
       title="Like"
-      className="min-w-full"
       id={styles.likeButton}
+      className="border-2 p-1 rounded-md shadow-md"
       onClick={handleOnClick}
     >
-      {liked ? <FcLike /> : <FcLikePlaceholder />}
+      {liked ? (
+        <FcLike
+          style={{
+            color: 'red',
+          }}
+        />
+      ) : (
+        <FcLikePlaceholder />
+      )}
     </button>
   );
 };

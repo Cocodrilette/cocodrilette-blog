@@ -1,0 +1,4 @@
+#likeButton,
+#likeButton > svg {
+  display: flex;
+}

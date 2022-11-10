@@ -8,7 +8,7 @@ import '../styles/globals.css';
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark">
-      <IconContext.Provider value={{ size: '2.5rem' }}>
+      <IconContext.Provider value={{ size: '1.5rem' }}>
         <Component {...pageProps} />
       </IconContext.Provider>
     </ThemeProvider>

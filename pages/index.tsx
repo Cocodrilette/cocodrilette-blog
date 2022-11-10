@@ -47,6 +47,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
           href="https://github.com/cocodrilette"
           target="_blank"
           rel="noopener noreferrer"
+          id={styles.socialButton}
           className="inline-flex px-6 py-2 rounded-md border-2 text-white dark:text-white bg-gray-900 hover:bg-black hover:text-white dark:hover:text-white mt-10 mr-5"
         >
           Follow me on Github{' '}
@@ -56,6 +57,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
           href="https://twitter.com/cocodrilette"
           target="_blank"
           rel="noopener noreferrer"
+          id={styles.socialButton}
           className="inline-flex px-6 py-2 rounded-md border-2 text-white dark:text-white bg-blue-500 hover:bg-blue-600 hover:text-white dark:hover:text-white mt-10"
         >
           Follow me on Twitter{' '}
