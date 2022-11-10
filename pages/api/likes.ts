@@ -1,5 +1,5 @@
 import supabase from './supabase';
-import { Like, Error, LikesFunction } from '../types/likes';
+import { Like, Error, LikesFunction } from '../../types/likes';
 
 export const getLikesByPost: LikesFunction = async (
   postName: string | null
