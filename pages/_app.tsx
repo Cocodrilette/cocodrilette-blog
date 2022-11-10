@@ -1,12 +1,16 @@
 import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
+import { IconContext } from 'react-icons';
+
 import React from 'react';
 import '../styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ThemeProvider attribute="class" enableSystem={false} defaultTheme="dark">
-      <Component {...pageProps} />
+      <IconContext.Provider value={{ size: '2.5rem' }}>
+        <Component {...pageProps} />
+      </IconContext.Provider>
     </ThemeProvider>
   );
 };

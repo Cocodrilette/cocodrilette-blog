@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { format, parseISO } from 'date-fns';
 import fs from 'fs';
 import matter from 'gray-matter';
@@ -20,6 +21,7 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils';
 import { BsShareFill } from 'react-icons/bs';
 
 import styles from '../../styles/post.module.css';
+import LikeButton from '../../components/LikeButton';
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
@@ -36,24 +38,25 @@ type PostPageProps = {
 };
 
 const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
+  const { title, description, date, tag, image } = frontMatter;
+  const [alreadyLiked, setAlreadyLiked] = useState(false);
+
   const customMeta: MetaProps = {
-    title: `${frontMatter.title} - Cocodrilette`,
-    description: frontMatter.description,
-    image: `${WEBSITE_HOST_URL}${frontMatter.image}`,
-    date: frontMatter.date,
+    title: `${title} - Cocodrilette`,
+    description: description,
+    image: `${WEBSITE_HOST_URL}${image}`,
+    date: date,
     type: 'article',
   };
   return (
     <Layout customMeta={customMeta}>
       <article id={styles.articleContainer} className="flex-col">
         <h1 className="mb-1 mt-5 text-gray-900 text-3xl font-extrabold dark:text-white">
-          {frontMatter.title}
+          {title}
         </h1>
-        <p className="mb-10 text-sm  text-gray-500 dark:text-gray-400">
-          {frontMatter.tag}
-        </p>
+        <p className="mb-10 text-sm  text-gray-500 dark:text-gray-400">{tag}</p>
         <p className="mb-10 text-sm text-gray-500 dark:text-gray-400">
-          {format(parseISO(frontMatter.date), 'MMMM dd, yyyy')}
+          {format(parseISO(date), 'MMMM dd, yyyy')}
         </p>
 
         <button
@@ -65,10 +68,23 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
         >
           <BsShareFill />
         </button>
+
         <div className="prose dark:prose-dark">
           <MDXRemote {...source} components={components} />
         </div>
       </article>
+      <div className="flex items-center gap-5 mt-10">
+        <p className="text-xl my-5">
+          If you liked this article <strong>give it a like</strong> and share it
+          with your friends{' '}
+        </p>
+        <div>
+          <LikeButton
+            alreadyLiked={alreadyLiked}
+            setAlreadyLiked={setAlreadyLiked}
+          />
+        </div>
+      </div>
     </Layout>
   );
 };
