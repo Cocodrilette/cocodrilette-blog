@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
-import { addLike, getLikesByPost } from '../api/likes';
+import { addLike, getLikesByPost } from '../pages/api/likes';
 import styles from '../styles/like.module.css';
 // import { Like } from '../types/likes';
 
