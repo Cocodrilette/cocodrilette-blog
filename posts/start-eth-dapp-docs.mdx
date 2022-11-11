@@ -1,0 +1,307 @@
+---
+title: Documentation for start-eth-dapp
+description: Welcome to `start-eth-dapp` docs. We will explaining how to use the tool.
+date: '2022-11-11'
+image: '/images/ethereum.jpg'
+tag: start-eth-dapp
+Language: English
+---
+
+<Image
+  alt={`Ethereum`}
+  src={`/images/ethereum.jpg`}
+  width={1920}
+  height={1080}
+  priority
+/>
+
+## Table of contents.
+
+1. [What is `start-eth-dapp`?](https://cocodrilette.vercel.app/posts/start-eth-dapp-docs#a-what-is-start-eth-dapp)
+
+2. [Setting up locally](https://cocodrilette.vercel.app/posts/start-eth-dapp-docs#b-setting-up-locally)
+
+3. [Setting up project requirements](https://cocodrilette.vercel.app/posts/start-eth-dapp-docs#c-setting-up-project-requirements)
+
+4. [Understanding the files](https://cocodrilette.vercel.app/posts/start-eth-dapp-docs#d-understanding-the-files)
+
+5. [Knowing issues](https://cocodrilette.vercel.app/posts/start-eth-dapp-docs#)
+
+---
+
+> **If you are using Windows, I highly recommend using [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) (Windows Subsystem for Linux)
+> in order to prevent permissions related errors. I tried on Windows 11 and sometimes
+> does not work.**
+
+---
+
+## A. What is `start-eth-dapp`?
+
+🙂
+
+## B. Setting up locally
+
+There are two ways to set up your local instance of `start-eth-dapp`.
+
+### a. Download the .zip file.
+
+- You can download it from [here](https://drive.google.com/file/d/1JaSi-0qjEvqYTCc4i_hv-CZwPVZ_vWNl/view?usp=sharing).
+
+- Once you got it, extract it continue with the **step 4** down below.
+
+### b. Clone the repositories from GitHub.
+
+1. Make a folder to contain the project.
+
+For example:
+
+```bash
+mkdir awesome-project
+```
+
+Then:
+
+```bash
+cd awesome-project
+```
+
+2. Inside your project folder, clone the **backend** repo.
+
+```bash:project-directory/
+git clone https://github.com/start-eth-dapp/backend.git
+```
+
+3. Inside your project folder, clone the **frontend** repo.
+
+```bash:project-directory/
+git clone https://github.com/start-eth-dapp/frontend.git
+```
+
+4. By now you must have two folders, **backend** and **frontend** inside of your root folder. So you need to install the dependencies for each one.
+
+- Inside your **backend** folder:
+
+```bash:project-directory/backend/
+npm i
+```
+
+- Inside your **frontend** folder:
+
+```bash:project-directory/frontend
+npm i
+```
+
+At this point you have all you need to start building, so let's see whats inside this folders and understand how works each part.
+
+## C. Setting up project requirements
+
+## Backend
+
+There are some requirements we need to check out before start using `start-eth-dapp`.
+
+```ts:backend/hardhat.config.ts
+// This is no all the code inside that file.
+
+const ALCHEMY_TESTNET_API_KEY = process.env.ALCHEMY_TESTNET_API_KEY;
+const ALCHEMY_MAINNET_API_KEY = process.env.ALCHEMY_MAINNET_API_KEY;
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+
+...
+
+const config: HardhatUserConfig = {
+
+  ...
+
+    matic: {
+      url: "https://rpc-mumbai.maticvigil.com",
+      accounts: [PRIVATE_KEY],
+    },
+    goerli: {
+      url: `https://eth-goerli.g.alchemy.com/v2/${ALCHEMY_TESTNET_API_KEY}`,
+      accounts: [PRIVATE_KEY],
+    },
+    mainnet: {
+      url: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_MAINNET_API_KEY}`,
+      accounts: [PRIVATE_KEY],
+    },
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
+  },
+};
+
+...
+
+```
+
+`start-eth-dapp` come with deploy ready for Local testnet, Polygon Mainnet, Goerli testnet and Ethereum mainnet. In addition it have a etherscan
+connection to allow you to verify your contracts. Let's look up how to get the requirement keys in order to get all of this running up.
+
+- **PRIVATE_KEY**. If you are thinking to deploy your contracts in other network than local testnet you need to provide your **wallet private key** to sign the
+  transactions. [Here you find how to do that in Metamask](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key).
+  **Remember to keep your key secure and far away of malicious eyes 👀**. Once you got it, copy and paste inside the `.env` file.
+
+- **ALCHEMY_TESTNET_API_KEY**. If you want to deploy on Goerli testnet you need a way to connect with the network. Alchemy achieve that by you and provide
+  and easy way to get that goal. First you need to create an [Alchemy account](https://dashboard.alchemy.com/) and then, go to the dashboard, create a new project
+  and get the _key_.
+
+- **ALCHEMY_MAINNET_API_KEY**. To deploy on mainnet is the same way I explain before, the only different is that you don´t select **Goerli** on the **Create App**
+  menu but select **Mainnet**.
+
+  {' '}
+
+  <Image
+    alt={`Alchemy example`}
+    src={`/images/alchemy.png`}
+    width={1920}
+    height={1000}
+    priority
+  />
+
+- In addition to this, you need to add your public wallet address to get some test ETH to allow you to use the local network. In
+  `.env` file set your public key in PUBLIC_KEY variable.
+
+  You finally should have an `.env` looking like this:
+
+  <Image
+    alt={`.env example`}
+    src={`/images/env.png`}
+    width={800}
+    height={250}
+    priority
+  />
+
+- **ETHERSCAN_API_KEY**. The same here. Go to [Etherscan](https://etherscan.io/), create and account, go to your profile section and look up for the **API Keys**
+  option on the left side menu, add a new API key and thats all.
+
+  {' '}
+
+  <Image
+    alt={`Etherscan example`}
+    src={`/images/etherscan.png`}
+    width={1920}
+    height={1000}
+    priority
+  />
+
+## D. Understanding the files.
+
+Now we are ready to write our code. But, where?
+
+Inside you backend folder you will find a `contracts` folder where your Solidity code live. When you download `start-eth-dapp` you will get two examples contracts
+and a test for one of those. Those contracts and test does not have any special meaning, there pretend to be a example for you to figure out how to do your own.
+
+---
+
+> **NOTE:
+> You must call your main contract as Main.sol and the name of the contract also must be Main to the moving script can find it.**
+
+---
+
+## E. Interacting with the contracts.
+
+Once you have done your contracts you have some ways to interact with.
+
+### a. Deploying locally.
+
+To deploy your contracts to a local network you must first run a local blockchain by using the terminal.
+
+Open your terminal and _cd_ into your backend directory and run
+
+```bash:backend/
+npm run chain
+```
+
+In a few seconds you can see your local blockchain running up on http://127.0.0.1:8545/ by default.
+
+To deploy your contracts to your local blockchain open a new terminal window and run
+
+```bash:backend/
+npm run deploy-local
+```
+
+This command will compile and deploy and give you some information about the deploy through the terminal.
+
+<Image
+  alt={`Deploy logs`}
+  src={`/images/terminal-local-deploy-logs.png`}
+  width={1920}
+  height={700}
+  priority
+/>
+
+---
+
+> **You don´t need to copy your contracts address, it will be store in a newly created `frontend/contracts`
+> directory with the ABI too. By this way you get what you need to work with your contracts in your frontend
+> at ease. Go there and look.**
+
+---
+
+To run the test simply run
+
+```bash:backend/
+npm test
+```
+
+and you get some feedback too.
+
+<Image
+  alt={`Tests logs`}
+  src={`/images/tests-logs.png`}
+  width={1920}
+  height={700}
+  priority
+/>
+
+### b. Deploying remote.
+
+We will looking how to do it with Goerli, but it works exactly the same on Mainnet.
+
+To deploy your contracts to a Goerli you just need to run
+
+```bash:backend/
+npm run deploy-goerli
+```
+
+and you will get the same logs than locally.
+
+> Your contracts address and ABI will be stored in the same way that locally deploy do. Remember `frontend/contracts`.
+
+And that's all for the backend part. Let's look up the front.
+
+## Frontend
+
+In your **frontend** directory you will find a `contracts` directory. And two files inside of it.
+
+- `Main-contract-address.json` that contains the address where you contract was deployed and
+- `Main.json` that contains the contract ABI.
+
+In `frontend/components/tasks` you can find a not fully implementation of the Main.sol contract that live in the backend.
+You can look up and figure out how to implement your own contracts. In addition, in `frontend/components/Header.tsx` you can
+find a fully implementation of a Metamask connection, so, one problem less.
+
+That's how easy it is to have a decentralized application to start building your next idea. So good luck.
+
+## F. Knowing issues.
+
+1. If you stop and rerun the local network Metamask throw to you the following error:
+
+```json:error
+MetaMask - RPC Error: [ethjs-query] while formatting outputs from RPC
+{
+  "value": {
+    "code": -32603,
+    "data": {
+      "code": -32000,
+      "message": "Nonce too high. Expected nonce to be 0 but got 1. Note that transactions can't be queued when automining.",
+      "data": {
+        "message": "Nonce too high. Expected nonce to be 0 but got 1. Note that transactions can't be queued when automining."
+      }
+    }
+  }
+}
+```
+
+Check out this [post](https://github.com/scaffold-eth/scaffold-eth/issues/476#issuecomment-997227487) to know how to fix it.
