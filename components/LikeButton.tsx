@@ -41,7 +41,7 @@ const LikeButton = ({ alreadyLiked, setAlreadyLiked }) => {
     <button
       title="Like"
       id={styles.likeButton}
-      className="border-2 p-1 rounded-md shadow-md"
+      className="border-2 p-1 rounded-md shadow-sm"
       onClick={handleOnClick}
     >
       {liked ? (

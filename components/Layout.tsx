@@ -31,7 +31,7 @@ const Layout = ({ children, customMeta }: LayoutProps): JSX.Element => {
           Built with ❤️ by{' '}
           <a
             className="text-gray-900 dark:text-white"
-            href="https://twitter.com/cocodrilette"
+            href="https://github.com/cocodrilette"
           >
             Cocodrilette
           </a>

@@ -21,7 +21,7 @@ export const About = (): JSX.Element => {
             target="_blank"
             rel="noreferrer"
           >
-            Email me
+            email me
           </a>
         </h1>
       </div>

@@ -18,7 +18,7 @@ import Layout, { WEBSITE_HOST_URL } from '../../components/Layout';
 import { MetaProps } from '../../types/layout';
 import { PostType } from '../../types/post';
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils';
-import { BsShareFill } from 'react-icons/bs';
+// import { BsShareFill } from 'react-icons/bs';
 
 import styles from '../../styles/post.module.css';
 import LikeButton from '../../components/LikeButton';
@@ -55,11 +55,11 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
           {title}
         </h1>
         <p className="mb-10 text-sm  text-gray-500 dark:text-gray-400">{tag}</p>
-        <p className="mb-10 text-sm text-gray-500 dark:text-gray-400">
+        <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
           {format(parseISO(date), 'MMMM dd, yyyy')}
         </p>
 
-        <button
+        {/* <button
           title="Share"
           className="max-w-xs"
           onClick={() => {
@@ -67,7 +67,7 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
           }}
         >
           <BsShareFill />
-        </button>
+        </button> */}
 
         <div className="prose dark:prose-dark">
           <MDXRemote {...source} components={components} />
@@ -76,7 +76,7 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
       <div className="flex items-center gap-5 mt-10">
         <p className="text-xl my-5">
           If you liked this article <strong>give it a like</strong> and share it
-          with your friends{' '}
+          with your friends!{' '}
         </p>
         <div>
           <LikeButton
