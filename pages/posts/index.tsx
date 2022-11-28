@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/Layout/Layout';
 import { getAllPosts } from '../../lib/api';
 import { MetaProps } from '../../types/layout';
 import { PostType } from '../../types/post';

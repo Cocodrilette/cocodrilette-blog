@@ -14,14 +14,15 @@ import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import Layout, { WEBSITE_HOST_URL } from '../../components/Layout';
+import Layout, { WEBSITE_HOST_URL } from '../../components/Layout/Layout';
 import { MetaProps } from '../../types/layout';
 import { PostType } from '../../types/post';
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils';
 // import { BsShareFill } from 'react-icons/bs';
 
 import styles from '../../styles/post.module.css';
-import LikeButton from '../../components/LikeButton';
+import LikeButton from '../../components/Buttons/LikeButton';
+import SendEthButton from '../../components/Buttons/BuyMeACoffee';
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
@@ -85,6 +86,7 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
           />
         </div>
       </div>
+      <SendEthButton />
     </Layout>
   );
 };

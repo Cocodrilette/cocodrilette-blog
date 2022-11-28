@@ -2,13 +2,14 @@ import { format, parseISO } from 'date-fns';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import React from 'react';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import { MetaProps } from '../types/layout';
 import { getAllPosts } from '../lib/api';
 import { PostType } from '../types/post';
 import { BsGithub, BsTwitter } from 'react-icons/bs';
 
 import styles from '../styles/index.module.css';
+import BuyMeACoffee from '../components/Buttons/BuyMeACoffee';
 
 type IndexProps = {
   posts: PostType[];
@@ -51,7 +52,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
           target="_blank"
           rel="noopener noreferrer"
           id={styles.socialButton}
-          className="inline-flex px-6 py-2 rounded-md border-2 text-white dark:text-white bg-gray-900 hover:bg-black hover:text-white dark:hover:text-white mt-10 mr-5"
+          className="inline-flex px-6 py-2 rounded-md border-2 border-black  dark:border-white text-white dark:text-white bg-gray-900 hover:bg-black hover:text-white dark:hover:text-white mt-10 mr-5 transition-colors"
         >
           Follow me on Github{' '}
           <BsGithub className="inline-flex justify-center text-center m-auto ml-3" />
@@ -61,7 +62,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
           target="_blank"
           rel="noopener noreferrer"
           id={styles.socialButton}
-          className="inline-flex px-6 py-2 rounded-md border-2 text-white dark:text-white bg-blue-500 hover:bg-blue-600 hover:text-white dark:hover:text-white mt-10"
+          className="inline-flex px-6 py-2 rounded-md border-2 border-black  dark:border-white text-white dark:text-white bg-blue-500 hover:bg-blue-600 hover:text-white dark:hover:text-white mt-10 transition-colors"
         >
           Follow me on Twitter{' '}
           <BsTwitter className="inline-flex justify-center text-center m-auto ml-3" />
@@ -74,6 +75,8 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
           web dev, and some more interest things. So, keep your eyes on it 👀.
         </h2>
       </div>
+
+      <BuyMeACoffee />
 
       <div className="flex flex-col mt-24 mb-8">
         <h2 className="text-4xl font-bold">Latest posts</h2>
