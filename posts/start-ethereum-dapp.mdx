@@ -1,0 +1,95 @@
+---
+title: start-ethereum-dapp
+description: A simple yet powerful Ethereum DApp scaffold for you to build fast and easy.
+date: '2022-12-14'
+image: '/images/blockchain.jpg'
+tag: start-ethereum-dapp
+Language: English
+---
+
+A simple yet powerful Ethereum DApp scaffold for you to build fast and easy.
+
+You will find a simple frontend implementation for a ERC-20 token with some functions derived from it as an example. Also you can find an end-to-end test for the [Open Zeppelin ERC-20 implementation](https://docs.openzeppelin.com/contracts/4.x/erc20).
+
+> By using this tool you don't need to worry about configurations but only implement your business.
+> [Any feedback will be appreciate](#).
+
+## How to use the repo?
+
+Many of the problems has been solved, the idea behind `start-ethereum-dapp` is help you to accelerate your development flow, by providing all you always need. **When you deploy them by using any of the different ways describes below a new `contracts` folder will automatically generate inside the `frontend` folder. Here you will find:**
+
+- the contracts address deployed for
+
+  `.frontend/contracts/{_contractName_}-address.json`,
+
+- the contracts ABI and
+
+  `.frontend/contracts/{_contractName_}.json`,
+
+- the contracts types.
+
+  `.frontend/contracts/types/{_contractName_}.ts`
+
+## Stack
+
+### At the backend
+
+[Hardhat](#) (with [TypeScript](#)) to compile [Solidity](#) and deploy your [Smart Contracts](#) with [Chai](#) to test.
+
+### At the frontend
+
+[TypeScript](#) enhanced with [React](#) and [Next.js](#) at the top of it. [Web3Modal](#) and [Ethers.js](#) for the 3 at Web and [Tailwind](#) and [next-themes](#) for the beauty with [react-icons](#) already installed to increase the chill out.
+
+## 1. Clone the repo
+
+```bash
+git clone https://github.com/start-ethereum-dapp/start-ethereum-dapp.git --recursive
+```
+
+## 2. Setting up the project.
+
+1. If you want to send your contracts to a non-local network you need a provider. [Alchemy](https://www.alchemy.com/) is already set up for Goerli and Mainnet, but you can change it in `hardhat.config.js`. When you have your API KEY copy and paste it in the `example.env` file and delete the `example` word from.
+
+2. You also need an **Etherscan API KEY** in order to verify your contracts. Go [here](https://etherscan.io/) and get you key. When you do that paste it in the `.env` file.
+
+3. To deploy the contracts you also need to provide your **[Wallet private key](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-export-an-account-s-private-key)**, **and you can set up the public key in the `.env` file to fund your account with test ETH**.
+
+That's all.
+
+## 3. Running the project.
+
+### Let's start with the backend part
+
+```bash
+# ./backend
+
+# Install the dependencies
+npm install
+
+# Run a local test network
+npm run chain
+
+# Deploy to local test network
+npm run deploy-local
+
+# Deploy to Goerli test network
+npm run deploy-goerli
+
+# Deploy to Ethereum Mainnet
+npm run deploy-mainnet
+
+# Deploy to Polygon test network (Matic)
+npm run deploy-polygon # ! No tested
+
+# Run the test
+npm test
+```
+
+### Let's go with the frontend
+
+```bash
+# ./frontend
+
+# Install the dependencies
+yarn install
+```
