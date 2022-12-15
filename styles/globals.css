@@ -155,3 +155,7 @@ pre {
 .highlight-line {
   @apply block px-4 -mx-4 bg-gray-100 border-l-4 border-blue-500 dark:bg-gray-800;
 }
+
+gitHub {
+  color: red;
+}

@@ -23,6 +23,7 @@ import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils';
 import styles from '../../styles/post.module.css';
 import LikeButton from '../../components/Buttons/LikeButton';
 import SendEthButton from '../../components/Buttons/BuyMeACoffee';
+// import CommentBox from '../../components/Comments/CommentBox';
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
@@ -87,6 +88,7 @@ const PostPage = ({ source, frontMatter }: PostPageProps): JSX.Element => {
         </div>
       </div>
       <SendEthButton />
+      {/* <CommentBox /> */}
     </Layout>
   );
 };

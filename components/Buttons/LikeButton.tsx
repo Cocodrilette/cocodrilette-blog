@@ -2,9 +2,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
-import { addLike, getLikesByPost } from '../../pages/api/likes';
+import { addLike, getLikesByPost } from '../../api/likes';
 import styles from '../../styles/like.module.css';
-// import { Like } from '../types/likes';
 
 const LikeButton = ({ alreadyLiked, setAlreadyLiked }) => {
   const router = useRouter();
@@ -14,7 +13,6 @@ const LikeButton = ({ alreadyLiked, setAlreadyLiked }) => {
 
   const getLikes = async () => {
     const likes: any = await getLikesByPost(postName);
-    // console.log(likes);
     setLikes(likes.length);
   };
 
@@ -22,7 +20,6 @@ const LikeButton = ({ alreadyLiked, setAlreadyLiked }) => {
     await addLike(postName);
     setAlreadyLiked(true);
     setLiked(true);
-    // console.log(res);
     getLikes();
   };
 
@@ -33,7 +30,6 @@ const LikeButton = ({ alreadyLiked, setAlreadyLiked }) => {
   };
 
   useEffect(() => {
-    // console.log(postName);
     getLikes();
   }, [likes]);
 

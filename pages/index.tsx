@@ -9,7 +9,7 @@ import { PostType } from '../types/post';
 import { BsGithub, BsTwitter } from 'react-icons/bs';
 
 import styles from '../styles/index.module.css';
-import BuyMeACoffee from '../components/Buttons/BuyMeACoffee';
+// import BuyMeACoffee from '../components/Buttons/BuyMeACoffee';
 
 type IndexProps = {
   posts: PostType[];
@@ -76,7 +76,7 @@ export const Index = ({ posts }: IndexProps): JSX.Element => {
         </h2>
       </div>
 
-      <BuyMeACoffee />
+      {/* <BuyMeACoffee /> */}
 
       <div className="flex flex-col mt-24 mb-8">
         <h2 className="text-4xl font-bold">Latest posts</h2>
